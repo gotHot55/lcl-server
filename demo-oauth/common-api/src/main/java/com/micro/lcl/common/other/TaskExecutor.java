@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 @Slf4j
 public class TaskExecutor {
     /**
-     * 线程池
+     * 线程池  使用自定义的线程池  见TaskThreadPoolExecutor类下的getPoolExecutor
      */
     private final ExecutorService executorService;
 

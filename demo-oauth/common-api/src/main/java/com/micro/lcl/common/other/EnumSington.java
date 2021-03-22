@@ -10,11 +10,11 @@ package com.micro.lcl.common.other;
 public enum EnumSington {
     INSTANCE;
 
-    public void test() {
-        System.out.println("枚举安装单例！");
+    public void getInstance() {
+        System.out.println("枚举单例模式");
     }
 
     public static void main(String[] args) {
-        EnumSington.INSTANCE.test();
+        EnumSington.INSTANCE.getInstance();
     }
 }
