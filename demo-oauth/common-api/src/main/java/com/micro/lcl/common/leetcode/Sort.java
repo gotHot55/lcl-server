@@ -1,9 +1,7 @@
 package com.micro.lcl.common.leetcode;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * 排序
@@ -44,8 +42,8 @@ public class Sort {
             return;
         }
         int temp = 0;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums.length - 1; j++) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = 0; j < nums.length - 1 - i; j++) {
                 if (nums[j] > nums[j + 1]) {
                     temp = nums[j];
                     nums[j] = nums[j + 1];
@@ -246,18 +244,61 @@ public class Sort {
         arr[i] = temp;
     }
 
+
+
     public static void main(String[] args) {
         int[] nums = {4,6,8,5,9};
         System.out.println(Arrays.toString(nums));
 //        SelectorSort(nums);
 //        BubbleSort(nums);
 //        InsertionSort(nums);
-//        QuickSort(nums);
+        QuickSort(nums);
 //        Merge(nums);
 //        BaseSort(nums);
 //        shellSort(nums);
-        HeapSort(nums);
+//        HeapSort(nums);
         System.out.println(Arrays.toString(nums));
 
+    }
+}
+
+/**
+ * 交换数字的三种方法：临时变量法、算术法、位运算法。
+ */
+class Swap{
+    /**
+     * 临时变量法
+     * @param arr 数组
+     * @param i 下标i
+     * @param j 下标j
+     */
+    public static void swapByTemp(int[] arr, int i, int j) {
+        int temp=arr[i];
+        arr[i]= arr[j];
+        arr[j] = arr[i];
+    }
+
+    /**
+     * 通过算术法交换数组array的i和j位置的数据（有可能溢出）
+     * @param arr 数组
+     * @param i 下标i
+     * @param j 下标j
+     */
+    public static void swapByArithmetic(int[] arr, int i, int j) {
+        arr[i] = arr[i] + arr[j];
+        arr[j] = arr[i] - arr[j];
+        arr[i] = arr[i] = arr[j];
+    }
+
+    /**
+     * 通过位运算法交换数组array的i和j位置的数据
+     * @param arr 数组
+     * @param i 下标i
+     * @param j 下标j
+     */
+    public static void swapByBitOperation(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j]; //i^j^j=i
+        arr[i] = arr[i] ^ arr[j];//i^j^i=j
     }
 }
